@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html  xmlns:th="http://www.thymeleaf.org" lang="es">
+<head> 
+
+	<meta charset="utf-8">
+	<title>E-Market</title> 
+</head>
+<body>
+
+	<h2>Tu factura</h2>
+	
+	<h3>Datos del usuario</h3>
+	<p><b>Nombre:</b> <span th:text="${usuario.getNombre()}" scope="col"></span></p>
+	<p><b>Email:</b> <span th:text="${usuario.getEmail()}" scope="col"></span></p>
+	<p><b>Direccion:</b> <span th:text="${usuario.getDireccion()}" scope="col"></span></p>
+	<p><b>Telefono:</b> <span th:text="${usuario.getTelefono()}" scope="col"></span></p>
+	
+	<h3>Datos del pedido</h3>
+	<p><b>Unidades: </b><span th:text="${unidades}"></span></p>
+	<p><b>Metodo de envio: </b><span th:text="${pedido.getTipoEnvio()}"></span></p>
+	<p><b>Total: </b><span th:text="${total}"></span>€</p>
+	
+	<button ><a href="/inicio">Completar</a></button>
+
+
+</body>
+</html>

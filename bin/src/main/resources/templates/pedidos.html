@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+
+	<meta charset="utf-8">
+	<title>E-Market</title>
+</head>
+<body> 
+	<div id="div-general">         
+	<div id="div-usuario">
+
+		<p><b>Bienvenido a tu cuenta <span th:text="${usuario.getNick()}" scope="col"></span></b></p>
+		<button><a href="/terminate">Cerrar sesion</a></button>
+	
+	</div>
+	<hr>
+	<div>
+	
+		<h2>Estos son tus pedidos actuales</h2>
+		
+		<h3 th:text="${noPedidosAun}" style="color:red;"></h3><br>
+		<table>
+			<tr>
+			
+				<th scope="col">ID</th>
+				<th scope="col">Fecha</th>
+				<th scope="col">Método de envío</th>
+				<th scope="col">Modificar</th>
+				
+			</tr>
+			
+			<tr th:each="pedido : ${listaDePedidos}">
+			
+				<td th:text="${pedido.getId()}"></td>
+				<td th:text="${pedido.getGoodFecha()}"></td>
+				<td th:text="${pedido.getTipoEnvio()}"></td>
+				<td>
+				
+					<button><a th:href="@{/pedidos/editar/{id}(id=${pedido.id})}">Editar</a></button>
+					<button><a th:href="@{/pedidos/borrar/{id}(id=${pedido.id})}">Borrar</a></button>
+					
+				</td>
+			</tr>
+		</table>
+			<button><a href="/inicio">Inicio</a></button>
+	</div>
+	</div>
+</body>
+</html>

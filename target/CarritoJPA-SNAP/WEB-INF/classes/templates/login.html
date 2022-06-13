@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+	<div id="div-general">
+	  
+		<h1>Bienvenido a E-Market</h1>
+	    <form method="post" action="#" th:object="${usuario}" th:action=" @{/login/submit}">
+	    
+		   <p><input name="nick" placeholder="Introduzca su nombre" type="text" th:field="*{nick}"></p>
+		   <p><input name="contra" placeholder="Introduzca su contraseña" type="password" th:field="*{contra}"></p>
+		   <br><p th:text="${wrongLogin}" style="color:red;"></p>
+		   <p th:text="${notLoged}" style="color:red;"></p>
+		   <input type="submit" value="Acceder" id="boton">
+	    
+	    </form>
+	    
+	</div>
+
+
+
+</body>
+
+</html>

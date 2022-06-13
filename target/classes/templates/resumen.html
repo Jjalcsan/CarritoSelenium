@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html  xmlns:th="http://www.thymeleaf.org" lang="es">
+<head> 
+
+	<meta charset="utf-8">
+	<title>E-Market</title> 
+</head>
+<body>
+
+	<div id="div-general">
+	<div id="div-contenido">
+		
+		<h2>Datos del pedido</h2>
+	     
+		<table id="tablaUsu">
+			<tr>
+			
+				<th scope="col">Producto</th>
+				<th scope="col">Unidades</th>
+				<th scope="col">Precio</th>
+				
+			</tr>
+			<tr th:each="linea : ${lineaDePedidos}">
+			
+		        <td th:text="${linea.getProducto().getNombre()}"></td>
+		        <td th:text="${linea.getCantidad()}"></td>
+		        <td th:text="${linea.getProducto().getPrecio()*linea.getCantidad()}"></td>
+		        
+	        </tr>
+		</table>
+		
+		<h2>Elige un metodo de envio</h2>
+		<input type="hidden" th:value="${pedido.getId()}" name="idPed" >
+		<form th:action="@{/factura}" method="post">
+			<input type="hidden" th:value="${idPed}" name="idPed">
+			Normal 3€<input type="radio" name="envio" value="Normal" checked="checked"/>
+			Express 5€<input type="radio" name="envio" value="Express"/><br>
+			<button type="submit" id="boton">Finalizar pedido</button>
+		</form>
+		
+	    
+	     	
+	</div>
+	</div>
+</body>
+</html>

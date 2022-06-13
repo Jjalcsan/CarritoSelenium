@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Market</title>
+    
+</head>
+
+<body>
+
+	<div class="container">
+		<div id="div-usuario">
+
+			<p><b>Bienvenido a tu cuenta <span th:text="${usuario.getNick()}" scope="col"></span></b></p>
+			<button><a href="/terminate">Cerrar sesion</a></button>
+	
+		</div>
+	<hr>
+	<div id="div-contenido">
+		<h2>¿Qué quieres hacer?</h2>
+		<button><a href="/catalogo">Nuevo pedido</a></button>
+		<button><a href="/pedidos">Ver todos mis pedidos</a></button>
+	</div>
+	</div>
+ 
+</body>
+</html>

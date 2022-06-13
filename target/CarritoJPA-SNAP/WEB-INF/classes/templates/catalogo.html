@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+
+	<meta charset="utf-8"> 
+	<title>Catalogo E-Market</title> 
+</head>
+<body>
+
+	<div>
+	<div>
+		
+		<h1>Nuestra seleccion</h1>
+		<table>
+			<tr>
+			
+				<th scope="col">Producto</th>
+				<th scope="col">Precio</th>
+				<th scope="col">Unidades</th>
+				<th scope="col">Añadir</th>
+				
+			</tr>
+					
+			<tr th:each="producto : ${listaDeProductos}">
+				<form th:action="@{/catalogo}"  method="post" th:object="${produ}">
+					<td th:text="${producto.getNombre()}"></td>
+					<td th:text="${producto.getPrecio()}"></td>
+					<td><input type="number" name="unidades" min="0" value="0"/></td>
+					<input type="hidden" th:value="${producto.id}"  th:name="id" th:id="id">
+					<input type="hidden" th:value="${producto.nombre}">
+					<input type="hidden" th:value="${idPed}" name="idPed">
+					<td><input type="submit" value="Añadir"></td>
+				</form>
+				
+			</tr>
+			
+		</table>
+		<form th:action="@{/submit}" method="post">
+			<input type="hidden" th:value="${idPed}" name="idPed">
+        	<input type="submit" value="Completar">
+        </form>
+        <p th:text="${emptyCarrito}" style="color:red;"></p>
+        
+        
+
+	</div>	
+	</div>
+	
+</body>
+</html>
